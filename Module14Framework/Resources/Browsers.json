@@ -1,0 +1,10 @@
+{
+"Chrome": 
+       {
+         "resolution": "--start-maximized"
+       },
+"Firefox": 
+       {
+         "resolution": "--window-size=1024,768"
+       }
+}
