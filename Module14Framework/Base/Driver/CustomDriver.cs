@@ -62,5 +62,10 @@ namespace Module14Framework.Base.Driver
 		{
 			return _driver.SwitchTo();
 		}
+
+		public IWebDriver GetWrappedDriver()
+		{
+			return _driver;
+		}
 	}
 }

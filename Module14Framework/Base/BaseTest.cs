@@ -23,21 +23,12 @@ namespace Module14Framework.Base
 		{
 			logger.Info($"{TestContext.CurrentContext.Test.Name} is finished");
 
-			if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+			if (TestContext.CurrentContext.Result.Outcome == ResultState.Success)
 			{
-				TakeScreenshot();
+				Browser.TakeScreenshot();
 			}
 			Browser.Quit();
 		}
 
-		private static void TakeScreenshot()
-		{
-			var screenshot = ((ITakesScreenshot)Browser.GetDriver()).GetScreenshot();
-			string timeStamp = DateTime.Now.ToString("_MM-dd_HH-mm-ss");
-			string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
-			string testName = TestContext.CurrentContext.Test.Name;
-			string file = projectDirectory + "\\Screenshots\\" + testName + timeStamp + ".png";
-			screenshot.SaveAsFile(file);
-		}
 	}
 }

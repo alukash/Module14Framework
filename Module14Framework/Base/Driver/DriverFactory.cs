@@ -1,4 +1,5 @@
 ﻿using Module14Framework.Helper;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
@@ -10,10 +11,10 @@ namespace Module14Framework.Base.Driver
 	{
 		private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
-		internal static IWebDriver GetDriver()
+		internal static IWebDriver InitDriver()
 		{
-			//string browserType = Configuration.Browser;
-			string browserType = "Chrome";
+			string browserType = TestContext.Parameters.Get("Browser", "Chrome");
+			logger.Info("Browser is " + browserType);
 
 			string args = JsonReader.Read(browserType);
 			args = args ?? "--start-maximized";

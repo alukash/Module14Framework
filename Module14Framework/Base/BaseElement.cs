@@ -68,11 +68,6 @@ namespace Module14Framework.Base
 			}
 		}
 
-		//public IWebElement GetElement()
-		//{
-
-		//}
-
 		public string GetText()
 		{
 			return WaitUntilDisplayed().Text;

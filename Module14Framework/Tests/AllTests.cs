@@ -7,6 +7,7 @@ using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 
 namespace Module14Framework.Tests
@@ -14,7 +15,7 @@ namespace Module14Framework.Tests
 	public class AllTests : BaseTest
 	{
 		[Test]
-		[Category("Regresion")]
+		[Category("Regression")]
 		public void GetMachimeCostByEmail()
 		{
 			string searchTerm = "Google Cloud Platform Pricing Calculator";
@@ -44,7 +45,7 @@ namespace Module14Framework.Tests
 
 		[Test]
 		[Category("Smoke")]
-		[Category("Regresion")]
+		[Category("Regression")]
 		public void FirstSearchResultCorrespondToSearchTerm()
 		{
 			string searchTerm = "Google Cloud Pricing Calculator";
@@ -53,12 +54,11 @@ namespace Module14Framework.Tests
 			GoogleCloudSteps.MakeSearch(searchTerm);
 			string searchResult = GoogleCloudSteps.GetFirstSearchResult();
 			Assert.AreEqual(searchTerm, searchResult, "Search result is not correct");
-
 		}
 
 		[Test]
 		[Category("Smoke")]
-		[Category("Regresion")]
+		[Category("Regression")]
 		public void EmailAddressInputIsEmpty()
 		{
 			YopMailSteps.OpenHomePage();
@@ -67,21 +67,14 @@ namespace Module14Framework.Tests
 		}
 
 		[Test]
+		[Category("Temp")]
 		public void TestName()
 		{
-			Browser.GetDriver().Navigate().GoToUrl("https://cloud.google.com/");
-			_ = Browser.GetDriver().Title;
-			_ = Browser.GetDriver().Url;
-
-			//			Browser.GetDriver().Url = "https://google.com";
-			Browser.GetDriver().FindElement(By.CssSelector("div.hp-hero_cws-wrapper a[track-name='contact sales']"));
-			new BaseElement(By.CssSelector("div.hp-hero_cws-wrapper a[track-name='contact sales']")).Click();
-			_ = Browser.GetDriver().Url;
-			_ = Browser.GetDriver().Url;
-			_ = Browser.GetDriver().Url;
-
-
-			string str = "AAA";
+			int count = 10;
+			count = TestContext.Parameters.Count;
+			Console.WriteLine("###########" + count);
+			Console.WriteLine("###########" + TestContext.Parameters.Names.ToArray()[0]);
+			Console.WriteLine("###########" + TestContext.Parameters.Get("Browser", "asb"));
 		}
 	}
 }
