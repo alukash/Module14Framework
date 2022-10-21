@@ -61,7 +61,7 @@ namespace Module14Framework.Tests
 		}
 
 		[Test]
-		[Category("Smoke")]
+		[Category("Regression")]
 		[Category("Fail")]
 		public void FailTest()
 		{
