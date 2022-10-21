@@ -61,10 +61,11 @@ namespace Module14Framework.Tests
 		}
 
 		[Test]
+		[Category("Smoke")]
 		[Category("Fail")]
 		public void FailTest()
 		{
-			Assert.Fail("Test failed");
+			Assert.Fail("Test that should failed");
 		}
 	}
 }

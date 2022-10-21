@@ -1,9 +1,6 @@
 ﻿using Module14Framework.Base.Driver;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
-using OpenQA.Selenium;
-using System;
-using System.IO;
 
 namespace Module14Framework.Base
 {
@@ -29,6 +26,5 @@ namespace Module14Framework.Base
 			}
 			Browser.Quit();
 		}
-
 	}
 }

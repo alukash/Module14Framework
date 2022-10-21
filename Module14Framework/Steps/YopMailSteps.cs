@@ -19,7 +19,7 @@ namespace Module14Framework.Steps
 
 		public static void OpenHomePageInNewTab()
 		{
-			((IJavaScriptExecutor)Browser.GetDriver()).ExecuteScript("window.open()");
+			Browser.ExecuteScript("window.open()");
 			string currentWindowHandle = Browser.GetDriver().CurrentWindowHandle;
 			List<string> windowHandles = new List<string>(Browser.GetDriver().WindowHandles);
 			windowHandles.Remove(currentWindowHandle);

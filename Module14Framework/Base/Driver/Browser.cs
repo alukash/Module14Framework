@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
-using System.Diagnostics;
 using System.IO;
 
 namespace Module14Framework.Base.Driver
@@ -9,7 +8,7 @@ namespace Module14Framework.Base.Driver
 	internal class Browser
 	{
 		private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
-		
+
 		static IWebDriver _driver;
 
 		public static IWebDriver InitDriver()
@@ -26,7 +25,7 @@ namespace Module14Framework.Base.Driver
 
 		internal static void Quit()
 		{
-			if(_driver != null)
+			if (_driver != null)
 			{
 				_driver.Quit();
 			}
@@ -47,6 +46,11 @@ namespace Module14Framework.Base.Driver
 			_driver.SwitchTo().Window(window);
 		}
 
+		public static void ExecuteScript(string script)
+		{
+			((IJavaScriptExecutor)((CustomDriver)_driver).GetWrappedDriver()).ExecuteScript("window.open()");
+		}
+
 		public static void TakeScreenshot()
 		{
 			try
@@ -60,7 +64,7 @@ namespace Module14Framework.Base.Driver
 				Directory.CreateDirectory(path);
 				screenshot.SaveAsFile(file);
 			}
-			catch(Exception e)
+			catch (Exception e)
 			{
 				logger.Error("Failed to take screenshot: " + e.Message);
 			}
