@@ -23,7 +23,7 @@ namespace Module14Framework.Base
 		{
 			logger.Info($"{TestContext.CurrentContext.Test.Name} is finished");
 
-			if (TestContext.CurrentContext.Result.Outcome == ResultState.Success)
+			if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
 			{
 				Browser.TakeScreenshot();
 			}

@@ -70,11 +70,7 @@ namespace Module14Framework.Tests
 		[Category("Temp")]
 		public void TestName()
 		{
-			int count = 10;
-			count = TestContext.Parameters.Count;
-			Console.WriteLine("###########" + count);
-			Console.WriteLine("###########" + TestContext.Parameters.Names.ToArray()[0]);
-			Console.WriteLine("###########" + TestContext.Parameters.Get("Browser", "asb"));
+			Assert.Fail("Test failed");
 		}
 	}
 }

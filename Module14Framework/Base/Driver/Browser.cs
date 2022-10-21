@@ -54,8 +54,10 @@ namespace Module14Framework.Base.Driver
 				var screenshot = ((ITakesScreenshot)((CustomDriver)_driver).GetWrappedDriver()).GetScreenshot();
 				string timeStamp = DateTime.Now.ToString("_MM-dd_HH-mm-ss");
 				string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+				string path = projectDirectory + "\\Screenshots\\";
 				string testName = TestContext.CurrentContext.Test.Name;
-				string file = projectDirectory + "\\Screenshots\\" + testName + timeStamp + ".png";
+				string file = path + testName + timeStamp + ".png";
+				Directory.CreateDirectory(path);
 				screenshot.SaveAsFile(file);
 			}
 			catch(Exception e)
