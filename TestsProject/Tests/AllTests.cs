@@ -65,6 +65,7 @@ namespace Module14Framework.Tests
 		[Category("Fail")]
 		public void FailTest()
 		{
+			YopMailSteps.OpenHomePage();
 			Assert.Fail("Test that should failed");
 		}
 	}
