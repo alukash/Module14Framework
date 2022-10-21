@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Module14Framework.Pages
 {
-    internal class YopMailHomePage : BasePage
+	public class YopMailHomePage : BasePage
 	{
 		BaseElement generateRandomEmailLink = new BaseElement(By.CssSelector("a[href='email-generator']"));
 		BaseElement randomEmailText = new BaseElement(By.CssSelector("#egen"));

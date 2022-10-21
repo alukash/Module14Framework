@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace Module14Framework.Pages
 {
-	internal class GoogleCloudHomePage : BasePage
+	public class GoogleCloudHomePage : BasePage
 	{
 		BaseElement searchButton = new BaseElement(By.CssSelector(".devsite-search-query"));
 		BaseElement searchInput = new BaseElement(By.CssSelector(".devsite-search-field"));

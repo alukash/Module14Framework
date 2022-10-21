@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Module14Framework.Base
 {
-	internal class BaseElement : IWebElement
+	public class BaseElement : IWebElement
 	{
 		private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 

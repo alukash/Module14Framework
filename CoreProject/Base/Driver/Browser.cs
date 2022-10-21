@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Module14Framework.Base.Driver
 {
-	internal class Browser
+	public class Browser
 	{
 		private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
@@ -23,7 +23,7 @@ namespace Module14Framework.Base.Driver
 			return _driver;
 		}
 
-		internal static void Quit()
+		public static void Quit()
 		{
 			if (_driver != null)
 			{

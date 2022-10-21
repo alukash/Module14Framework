@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Module14Framework.Pages
 {
-	internal class YopMailBoxPage : BasePage
+	public class YopMailBoxPage : BasePage
 	{
 		BaseElement refreshButton = new BaseElement(By.CssSelector("#refresh"));
 		BaseElement costText = new BaseElement(By.XPath("//table//td[h3[.='Total Estimated Monthly Cost']]/following-sibling::td/h3"));
@@ -19,7 +19,7 @@ namespace Module14Framework.Pages
 			WaitPageLoaded(refreshButton);
 		}
 
-		internal void WaitForEmailWithSubject(string subject)
+		public void WaitForEmailWithSubject(string subject)
 		{
 			emailSubjectLocator = string.Format(emailSubjectLocator, subject);
 			BaseElement subjectElement = new BaseElement(By.XPath(emailSubjectLocator));

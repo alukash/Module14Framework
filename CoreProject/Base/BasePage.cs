@@ -5,22 +5,22 @@ using System;
 
 namespace Module14Framework.Base
 {
-	internal class BasePage
+	public class BasePage
 	{
 		int _defaultTimeout = int.Parse(Configuration.Timeout);
 		public IWebDriver driver = Browser.GetDriver();
 
-		internal void WaitPageLoaded(BaseElement element)
+		public void WaitPageLoaded(BaseElement element)
 		{
 			WaitPageLoaded(element, _defaultTimeout);
 		}
 
-		internal void WaitPageLoaded(BaseElement element, int timeout)
+		public void WaitPageLoaded(BaseElement element, int timeout)
 		{
 			element.WaitUntilDisplayed(timeout);
 		}
 
-		internal void WaitPageLoaded(string title)
+		public void WaitPageLoaded(string title)
 		{
 			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(_defaultTimeout));
 			wait.IgnoreExceptionTypes(typeof(NoSuchElementException));

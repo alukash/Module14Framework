@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace Module14Framework.Pages
 {
-	internal class GoogleCloudSearchResultsPage : BasePage
+	public class GoogleCloudSearchResultsPage : BasePage
 	{
 		BaseElement searchResultsList = new BaseElement(By.CssSelector("div.gsc-results"));
 		By searchResultLocator = By.CssSelector("a.gs-title");

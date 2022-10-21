@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace Module14Framework.Pages
 {
-	internal class GoogleCloudCalculatorPage : BasePage
+	public class GoogleCloudCalculatorPage : BasePage
 	{
 		BaseElement frame1 = new BaseElement(By.CssSelector("#cloud-site iframe"));
 		BaseElement frame2 = new BaseElement(By.CssSelector("#myFrame"));
@@ -46,7 +46,7 @@ namespace Module14Framework.Pages
 			Browser.SwitchToDefault();
 		}
 
-		internal void SelectModel(string model)
+		public void SelectModel(string model)
 		{
 			SwitchFrames();
 			modelSelect.Click();
@@ -55,7 +55,7 @@ namespace Module14Framework.Pages
 			Browser.SwitchToDefault();
 		}
 
-		internal void SelectLocation(string location)
+		public void SelectLocation(string location)
 		{
 			SwitchFrames();
 			locationSelect.Click();
@@ -64,14 +64,14 @@ namespace Module14Framework.Pages
 			Browser.SwitchToDefault();
 		}
 
-		internal void ClickAddToEstimateButton()
+		public void ClickAddToEstimateButton()
 		{
 			SwitchFrames();
 			addToEstimateButton.Click();
 			Browser.SwitchToDefault();
 		}
 
-		internal void SendEmail(string email)
+		public void SendEmail(string email)
 		{
 			SwitchFrames();
 			emailEstimatesButton.Click();

@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace Module14Framework.Helper
 {
-	internal class JsonReader
+	public class JsonReader
 	{
 		static string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
 		static string browsersJsonFile = projectDirectory + "\\Resources\\" + "Browsers.json";
