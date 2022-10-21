@@ -1,19 +1,13 @@
 using Module14Framework.Base;
-using Module14Framework.Base.Driver;
-using Module14Framework.Helper;
 using Module14Framework.Steps;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
 
 namespace Module14Framework.Tests
 {
 	public class AllTests : BaseTest
 	{
+		private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
 		[Test]
 		[Category("Regression")]
 		public void GetMachimeCostByEmail()
@@ -28,19 +22,19 @@ namespace Module14Framework.Tests
 			GoogleCloudSteps.MakeSearch(searchTerm);
 			GoogleCloudSteps.OpenSearchResult(searchTerm);
 			string costCalculator = GoogleCloudSteps.CalculateCost(numberOfInstances, model, location);
-			System.Console.WriteLine(costCalculator);
+			logger.Debug("costCalculator=" + costCalculator);
 
-			//	YopMailSteps.OpenHomePageInNewTab();
-			//	string emailAddress = YopMailSteps.GetEmailAddress();
-			//System.Console.WriteLine(emailAddress);
+			YopMailSteps.OpenHomePageInNewTab();
+			string emailAddress = YopMailSteps.GetEmailAddress();
+			logger.Debug("emailAddress=" + emailAddress);
 
-			//	GoogleCloudSteps.SendEmail(emailAddress);
+			GoogleCloudSteps.SendEmail(emailAddress);
 
-			//	YopMailSteps.ClickCheckEmailButton();
-			//	YopMailSteps.WaitForEmailReceived(emailSubject);
-			//	string costFromEmail = YopMailSteps.GetCost();
-			//System.Console.WriteLine(costFromEmail);
-			//	Assert.AreEqual(costCalculator, costFromEmail, "Costs are not equal");
+			YopMailSteps.ClickCheckEmailButton();
+			YopMailSteps.WaitForEmailReceived(emailSubject);
+			string costFromEmail = YopMailSteps.GetCost();
+			logger.Debug("costFromEmail=" + costFromEmail);
+			Assert.AreEqual(costCalculator, costFromEmail, "Costs are not equal");
 		}
 
 		[Test]
@@ -67,8 +61,8 @@ namespace Module14Framework.Tests
 		}
 
 		[Test]
-		[Category("Temp")]
-		public void TestName()
+		[Category("Fail")]
+		public void FailTest()
 		{
 			Assert.Fail("Test failed");
 		}
