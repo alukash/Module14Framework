@@ -11,6 +11,9 @@ namespace Module14Framework.Base
 
 		public static string Browser => GetEnvVar("Browser", "Chrome");
 
-		public static string Timeout => GetEnvVar("Timeout", "10");
+		public static string Timeout => GetEnvVar("Timeout", "20");
+
+		public static string TimeoutMin => GetEnvVar("Timeout", "5");
+
 	}
 }

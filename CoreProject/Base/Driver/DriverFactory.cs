@@ -14,7 +14,7 @@ namespace Module14Framework.Base.Driver
 		internal static IWebDriver InitDriver()
 		{
 			string browserType = TestContext.Parameters.Get("Browser", "Chrome");
-			logger.Info("Browser is " + browserType);
+			logger.Info(browserType + " browser is about to start");
 
 			string args = JsonReader.Read(browserType);
 			args = args ?? "--start-maximized";

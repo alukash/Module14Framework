@@ -40,7 +40,7 @@ namespace Module14Framework.Base
 
 		public void WaitUntilNotDisplayed()
 		{
-			int timeout = 5;
+			int timeout = int.Parse(Configuration.TimeoutMin);
 			WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(timeout));
 			wait.Until(condition =>
 			{
@@ -86,7 +86,6 @@ namespace Module14Framework.Base
 
 		public IWebElement FindElement(By by)
 		{
-
 			return _driver.FindElement(by);
 		}
 

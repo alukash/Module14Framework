@@ -12,11 +12,11 @@ namespace Module14Framework.Tests
 		[Category("Regression")]
 		public void GetMachimeCostByEmail()
 		{
-			string searchTerm = "Google Cloud Platform Pricing Calculator";
-			int numberOfInstances = 4;
-			string model = "Regular";
-			string location = "Frankfurt (europe-west3)";
+			const string searchTerm = "Google Cloud Platform Pricing Calculator";
+			const string model = "Regular";
+			const string location = "Frankfurt (europe-west3)";
 			const string emailSubject = "Google Cloud Price Estimate";
+			const int numberOfInstances = 4;
 
 			GoogleCloudSteps.OpenHomePage();
 			GoogleCloudSteps.MakeSearch(searchTerm);
@@ -61,8 +61,8 @@ namespace Module14Framework.Tests
 		}
 
 		[Test]
-		[Category("Regression")]
 		[Category("Fail")]
+		[Category("Regression")]
 		public void FailTest()
 		{
 			YopMailSteps.OpenHomePage();
