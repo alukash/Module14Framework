@@ -13,9 +13,8 @@ namespace Module14Framework.Base.Driver
 
 		internal static IWebDriver InitDriver()
 		{
+			IWebDriver driver;
 			string browserType = TestContext.Parameters.Get("Browser", "Chrome");
-			logger.Info(browserType + " browser is about to start");
-
 			string args = JsonReader.Read(browserType);
 			args = args ?? "--start-maximized";
 
@@ -25,13 +24,17 @@ namespace Module14Framework.Base.Driver
 					{
 						ChromeOptions opts = new ChromeOptions();
 						opts.AddArgument(args);
-						return new ChromeDriver(opts);
+						driver = new ChromeDriver(opts);
+						logger.Info("Chrome has been started");
+						return driver;
 					}
 				case "Firefox":
 					{
 						FirefoxOptions opts = new FirefoxOptions();
 						opts.AddArgument(args);
-						return new FirefoxDriver(opts);
+						driver =  new FirefoxDriver(opts);
+						logger.Info("Firefox has been started");
+						return driver;
 					}
 				default:
 					{
