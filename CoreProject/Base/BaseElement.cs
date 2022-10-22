@@ -10,9 +10,9 @@ namespace Module14Framework.Base
 {
 	public class BaseElement : IWebElement
 	{
-		private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+		static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
-		IWebDriver _driver = Browser.GetDriver();
+		IWebDriver Driver { get => Browser.GetDriver(); }
 		int _defaultTimeout = int.Parse(Configuration.Timeout);
 		By _locator;
 
@@ -28,25 +28,25 @@ namespace Module14Framework.Base
 
 		public IWebElement WaitUntilDisplayed(int timeout)
 		{
-			WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(timeout));
+			WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeout));
 			wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
 			wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
 			wait.Until(condition =>
 			{
-				return _driver.FindElement(_locator).Displayed;
+				return Driver.FindElement(_locator).Displayed;
 			});
-			return _driver.FindElement(_locator);
+			return Driver.FindElement(_locator);
 		}
 
 		public void WaitUntilNotDisplayed()
 		{
 			int timeout = int.Parse(Configuration.TimeoutMin);
-			WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(timeout));
+			WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeout));
 			wait.Until(condition =>
 			{
 				try
 				{
-					return !_driver.FindElement(_locator).Displayed;
+					return !Driver.FindElement(_locator).Displayed;
 				}
 				catch (Exception e)
 				{
@@ -57,7 +57,7 @@ namespace Module14Framework.Base
 
 		public bool IsDisplayed()
 		{
-			IList<IWebElement> elements = _driver.FindElements(_locator);
+			IList<IWebElement> elements = Driver.FindElements(_locator);
 			if (elements.Count == 0)
 			{
 				return false;
@@ -86,12 +86,12 @@ namespace Module14Framework.Base
 
 		public IWebElement FindElement(By by)
 		{
-			return _driver.FindElement(by);
+			return Driver.FindElement(by);
 		}
 
 		public ReadOnlyCollection<IWebElement> FindElements(By by)
 		{
-			return _driver.FindElements(by); ;
+			return Driver.FindElements(by); ;
 		}
 
 		public string GetAttribute(string attributeName)

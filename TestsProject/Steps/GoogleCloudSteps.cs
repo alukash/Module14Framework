@@ -6,41 +6,35 @@ namespace Module14Framework.Steps
 {
 	internal class GoogleCloudSteps
 	{
-		static GoogleCloudHomePage homePage;
-		static GoogleCloudCalculatorPage calcPage;
-		static GoogleCloudSearchResultsPage searchResultsPage;
+		static GoogleCloudHomePage homePage = new GoogleCloudHomePage();
+		static GoogleCloudCalculatorPage calcPage = new GoogleCloudCalculatorPage();
+		static GoogleCloudSearchResultsPage searchResultsPage = new GoogleCloudSearchResultsPage();
 
 		public static void OpenHomePage()
 		{
 			Browser.GetDriver().Navigate().GoToUrl("https://cloud.google.com/");
-			homePage = new GoogleCloudHomePage();
 			homePage.WaitPageLoaded();
 		}
 
 		public static void MakeSearch(string searchTerm)
 		{
-			homePage = new GoogleCloudHomePage();
 			homePage.ClickSearchButton();
 			homePage.EnterSearchTerm(searchTerm);
+			searchResultsPage.WaitPageLoaded();
 		}
 
 		public static void OpenSearchResult(string searchTerm)
 		{
-			searchResultsPage = new GoogleCloudSearchResultsPage();
-			searchResultsPage.WaitPageLoaded();
 			searchResultsPage.ClickSearchResult(searchTerm);
 		}
 
 		public static string GetFirstSearchResult()
 		{
-			searchResultsPage = new GoogleCloudSearchResultsPage();
-			searchResultsPage.WaitPageLoaded();
 			return searchResultsPage.GetFirstSearchResult();
 		}
 
 		public static string CalculateCost(int numberOfInstances, string model, string location)
 		{
-			calcPage = new GoogleCloudCalculatorPage();
 			calcPage.EnterNumberOfInstances(numberOfInstances);
 			calcPage.SelectModel(model);
 			calcPage.SelectLocation(location);
@@ -59,7 +53,6 @@ namespace Module14Framework.Steps
 		internal static void SendEmail(string email)
 		{
 			SwitchToCalculatorTab();
-			calcPage = new GoogleCloudCalculatorPage();
 			calcPage.WaitPageLoaded();
 			calcPage.SendEmail(email);
 		}

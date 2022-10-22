@@ -7,13 +7,12 @@ namespace Module14Framework.Steps
 {
 	internal class YopMailSteps
 	{
-		static YopMailHomePage homePage;
-		static YopMailBoxPage mailBoxPage;
+		static YopMailHomePage homePage = new YopMailHomePage();
+		static YopMailBoxPage mailBoxPage = new YopMailBoxPage();
 
 		public static void OpenHomePage()
 		{
 			Browser.GetDriver().Navigate().GoToUrl("https://yopmail.com/");
-			homePage = new YopMailHomePage();
 			homePage.WaitPageLoaded();
 		}
 
@@ -29,33 +28,28 @@ namespace Module14Framework.Steps
 
 		public static string GetEmailAddress()
 		{
-			homePage = new YopMailHomePage();
 			homePage.ClickGenerateRandomEmailLink();
 			return homePage.getRandomEmailText();
 		}
 
 		public static void ClickCheckEmailButton()
 		{
-			homePage = new YopMailHomePage();
 			homePage.ClickCheckEmailButton();
+			mailBoxPage.WaitPageLoaded();
 		}
 
 		public static void WaitForEmailReceived(string subject)
 		{
-			mailBoxPage = new YopMailBoxPage();
-			mailBoxPage.WaitPageLoaded();
 			mailBoxPage.WaitForEmailWithSubject(subject);
 		}
 
 		internal static string GetCost()
 		{
-			mailBoxPage = new YopMailBoxPage();
 			return mailBoxPage.GetCost();
 		}
 
 		internal static string GetEmailInputText()
 		{
-			homePage = new YopMailHomePage();
 			return homePage.GetEmailInputText();
 		}
 	}

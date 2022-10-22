@@ -8,7 +8,7 @@ namespace Module14Framework.Base
 	public class BasePage
 	{
 		int _defaultTimeout = int.Parse(Configuration.Timeout);
-		public IWebDriver driver = Browser.GetDriver();
+		IWebDriver Driver { get => Browser.GetDriver(); }
 
 		public void WaitPageLoaded(BaseElement element)
 		{
@@ -22,11 +22,11 @@ namespace Module14Framework.Base
 
 		public void WaitPageLoaded(string title)
 		{
-			var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(_defaultTimeout));
+			var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(_defaultTimeout));
 			wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
 			wait.Until(condition =>
 			{
-				return driver.Title.Equals(title);
+				return Driver.Title.Equals(title);
 			});
 		}
 	}

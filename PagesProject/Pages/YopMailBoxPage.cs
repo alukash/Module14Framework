@@ -34,7 +34,7 @@ namespace Module14Framework.Pages
 					{
 						Browser.SwitchToDefault();
 						refreshButton.Click();
-						throw new ApplicationException("No email with {subject} subject received");
+						throw new ApplicationException($"No email with {subject} subject received");
 					}
 				});
 			Browser.SwitchToDefault();
